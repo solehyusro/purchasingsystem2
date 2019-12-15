@@ -1,0 +1,200 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="null" language="groovy" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="d1630f74-9df6-4947-b1e3-683f686e4315">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="no_po" class="java.lang.String">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<queryString>
+		<![CDATA[SELECT
+     pemesanan.`no_po` AS pemesanan_no_po,
+     pemesanan.`kd_admin` AS pemesanan_kd_admin,
+     pemesanan.`kd_supp` AS pemesanan_kd_supp,
+     pemesanan.`kd_brg` AS pemesanan_kd_brg,
+     pemesanan.`tgl_po` AS pemesanan_tgl_po,
+     pemesanan.`banyak_brg` AS pemesanan_banyak_brg,
+     pemesanan.`harga_satuan` AS pemesanan_harga_satuan,
+     pemesanan.`total` AS pemesanan_total,
+     pemesanan.`status` AS pemesanan_status,
+     pemesanan.`jurnal` AS pemesanan_jurnal,
+     pemesanan.`terima` AS pemesanan_terima,
+     barang.`kd_brg` AS barang_kd_brg,
+     barang.`nm_brg` AS barang_nm_brg,
+     barang.`stok` AS barang_stok,
+     supplier.`kd_supp` AS supplier_kd_supp,
+     supplier.`nm_supp` AS supplier_nm_supp,
+     supplier.`alamat` AS supplier_alamat,
+     supplier.`no_telp` AS supplier_no_telp,
+     admin.`id_admin` AS admin_id_admin,
+     admin.`password` AS admin_password,
+     admin.`nama` AS admin_nama,
+     admin.`alamat` AS admin_alamat,
+     admin.`no_telp` AS admin_no_telp,
+     admin.`hak_akses` AS admin_hak_akses
+FROM
+     `barang` barang INNER JOIN `pemesanan` pemesanan ON barang.`kd_brg` = pemesanan.`kd_brg`
+     INNER JOIN `supplier` supplier ON pemesanan.`kd_supp` = supplier.`kd_supp`
+     INNER JOIN `admin` admin ON pemesanan.`kd_admin` = admin.`id_admin`
+WHERE
+pemesanan.`no_po`=$P{no_po}]]>
+	</queryString>
+	<field name="pemesanan_no_po" class="java.lang.String"/>
+	<field name="pemesanan_kd_admin" class="java.lang.String"/>
+	<field name="pemesanan_kd_supp" class="java.lang.String"/>
+	<field name="pemesanan_kd_brg" class="java.lang.String"/>
+	<field name="pemesanan_tgl_po" class="java.sql.Date"/>
+	<field name="pemesanan_banyak_brg" class="java.lang.Integer"/>
+	<field name="pemesanan_harga_satuan" class="java.lang.Integer"/>
+	<field name="pemesanan_total" class="java.lang.Integer"/>
+	<field name="pemesanan_status" class="java.lang.String"/>
+	<field name="pemesanan_jurnal" class="java.lang.String"/>
+	<field name="pemesanan_terima" class="java.lang.String"/>
+	<field name="barang_kd_brg" class="java.lang.String"/>
+	<field name="barang_nm_brg" class="java.lang.String"/>
+	<field name="barang_stok" class="java.lang.Integer"/>
+	<field name="supplier_kd_supp" class="java.lang.String"/>
+	<field name="supplier_nm_supp" class="java.lang.String"/>
+	<field name="supplier_alamat" class="java.lang.String"/>
+	<field name="supplier_no_telp" class="java.lang.String"/>
+	<field name="admin_id_admin" class="java.lang.String"/>
+	<field name="admin_password" class="java.lang.String"/>
+	<field name="admin_nama" class="java.lang.String"/>
+	<field name="admin_alamat" class="java.lang.String"/>
+	<field name="admin_no_telp" class="java.lang.String"/>
+	<field name="admin_hak_akses" class="java.lang.String"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="79" splitType="Stretch">
+			<image>
+				<reportElement x="0" y="0" width="344" height="79" uuid="c65be562-d888-4680-8161-cb6542f40b45"/>
+				<imageExpression><![CDATA["D:\\heksaef.png"]]></imageExpression>
+			</image>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="35" splitType="Stretch">
+			<line>
+				<reportElement x="0" y="0" width="555" height="1" uuid="e07e46b9-091f-4695-8523-ede9fb4dcb6d"/>
+				<graphicElement>
+					<pen lineWidth="3.0" lineStyle="Double"/>
+				</graphicElement>
+			</line>
+			<staticText>
+				<reportElement x="3" y="1" width="552" height="20" uuid="5ad606da-a027-4d8d-af96-34d58f3e8455"/>
+				<textElement textAlignment="Center">
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[BUKTI PENERIMAAN BARANG]]></text>
+			</staticText>
+		</band>
+	</pageHeader>
+	<columnHeader>
+		<band height="41" splitType="Stretch">
+			<staticText>
+				<reportElement x="360" y="0" width="48" height="20" uuid="b6b12111-014e-4317-8035-73e34689c0ee"/>
+				<text><![CDATA[No. PO:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="360" y="20" width="48" height="20" uuid="db305fd2-6067-4b59-b1d2-535c6532319f"/>
+				<text><![CDATA[Tanggal:]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="3" y="0" width="100" height="20" uuid="457f683b-6b6c-4226-98c5-751aabddf332"/>
+				<textFieldExpression><![CDATA[$F{supplier_nm_supp}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="408" y="0" width="100" height="20" uuid="88aa6022-a551-4c91-907a-8795301c6824"/>
+				<textFieldExpression><![CDATA[$F{pemesanan_no_po}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="3" y="20" width="100" height="20" uuid="d8a5a4d1-da46-4784-8602-81aba7ab8683"/>
+				<textFieldExpression><![CDATA[$F{supplier_alamat}]]></textFieldExpression>
+			</textField>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="235" splitType="Stretch">
+			<rectangle>
+				<reportElement x="186" y="0" width="65" height="125" uuid="1f7518bc-f4ff-4868-ac01-71307bf4745d"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="251" y="0" width="100" height="125" uuid="19f29fd6-21e6-45c1-8ee1-ee10d0501b8b"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="351" y="0" width="204" height="125" uuid="43f8b8e7-422d-47a2-913e-fab81ebc0b7a"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="0" y="0" width="186" height="125" uuid="8ade1946-2a99-4f6c-b80e-746025cbb3ab"/>
+			</rectangle>
+			<staticText>
+				<reportElement x="186" y="1" width="65" height="20" uuid="6c3104b6-6fe4-4857-b11f-6bda57f1d389"/>
+				<textElement textAlignment="Center"/>
+				<text><![CDATA[Banyak]]></text>
+			</staticText>
+			<line>
+				<reportElement x="3" y="21" width="555" height="1" uuid="dc5fdfb7-f701-4c51-a158-c9fe859eadc6"/>
+			</line>
+			<textField>
+				<reportElement x="3" y="21" width="126" height="20" uuid="d39eb878-3abe-49f5-a239-be8e2ce52bcb"/>
+				<textFieldExpression><![CDATA[$F{barang_nm_brg}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="186" y="21" width="65" height="20" uuid="50bc1b9a-a2db-4cb8-84c1-95d002faef14"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{pemesanan_banyak_brg}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="0" y="1" width="186" height="20" uuid="91489a74-7049-4239-a6a0-bc99250cef80"/>
+				<textElement textAlignment="Center"/>
+				<text><![CDATA[Nama Barang]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="251" y="1" width="100" height="20" uuid="acad66fe-71cc-4c51-aee6-27e2d2d4734f"/>
+				<textElement textAlignment="Center"/>
+				<text><![CDATA[Harga Satuan]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="268" y="21" width="83" height="20" uuid="25885a97-375d-4c8e-a8c3-a12cd30c535e"/>
+				<textFieldExpression><![CDATA[$F{pemesanan_harga_satuan}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="351" y="1" width="100" height="20" uuid="50da73a7-d645-447d-a89a-81cab30483bb"/>
+				<textElement textAlignment="Center"/>
+				<text><![CDATA[Total]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="451" y="1" width="102" height="20" uuid="fddc07b5-a644-4b3e-a56d-3c3efa73a61f"/>
+				<textElement textAlignment="Center"/>
+				<text><![CDATA[Keterangan]]></text>
+			</staticText>
+			<line>
+				<reportElement x="451" y="0" width="1" height="125" uuid="fb306279-59dd-49a3-9f49-445eb5f4cbbd"/>
+			</line>
+			<textField>
+				<reportElement x="367" y="21" width="85" height="20" uuid="55e2fa55-092a-424b-a792-c97b5455f1f0"/>
+				<textFieldExpression><![CDATA[$F{pemesanan_total}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="396" y="144" width="145" height="20" uuid="ac0d0bfa-afee-44a8-b904-4d707a41bf70"/>
+				<textElement textAlignment="Center"/>
+				<text><![CDATA[Yang Mererima]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="396" y="215" width="145" height="20" uuid="a91949ec-de27-47f0-9721-6a00e658fd62"/>
+				<textElement textAlignment="Center"/>
+				<text><![CDATA[...............]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="252" y="21" width="16" height="20" uuid="94f904d1-d8c4-42e8-951a-5e59a74e57e8"/>
+				<text><![CDATA[Rp]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="351" y="21" width="16" height="20" uuid="82cfb7ba-10f4-47b4-bdf7-b2b84df40209"/>
+				<text><![CDATA[Rp]]></text>
+			</staticText>
+		</band>
+	</detail>
+</jasperReport>
